@@ -1,6 +1,16 @@
-from typing import Union
+import os 
 
+from dotenv import load_dotenv
+from typing import Union
 from fastapi import FastAPI
+
+load_dotenv() 
+
+SUPABASE_URL = os.getenv("SUPABASE_URL")
+SUPABASE_KEY = os.getenv("SUPABASE_SERVICE_KEY")
+
+print("SUPABASE_URL: ", SUPABASE_URL)
+
 
 app = FastAPI()
 
