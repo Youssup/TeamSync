@@ -1,6 +1,6 @@
 from typing import Union
 from fastapi import FastAPI
-from app.supabase import get_supabase_client
+from app.supabase_client import get_supabase_client
 app = FastAPI()
 
 
