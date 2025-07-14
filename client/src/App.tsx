@@ -1,15 +1,28 @@
-import { useState } from "react";
+import { useEffect, useState } from 'react';
+import { supabase } from './supabaseClient';
 
-function App() {
-  const [count, setCount] = useState(0);
+const App = () => {
+  const [users, setUsers] = useState<any[]>([]);
+
+  useEffect(() => {
+    const fetchUsers = async () => {
+      const { data } = await supabase.from('users').select('*');
+        setUsers(data ?? []);
+        console.log('Fetched users:', data);
+    };
+    fetchUsers();
+  }, []);
 
   return (
-    <>
-      <div>
-        <h1 className="text-3xl font-bold underline text-center">Testing!</h1>
-      </div>
-    </>
+    <div className="p-4">
+      <h1 className="text-xl font-bold mb-4">Test Supabase Connection</h1>
+      <ul>
+        {users.map((user) => (
+          <li key={user.id}>{user.username} (ELO: {user.elo_rating})</li>
+        ))}
+      </ul>
+    </div>
   );
-}
+};
 
 export default App;
