@@ -1,28 +1,17 @@
-import { useEffect, useState } from 'react';
-import { supabase } from './supabaseClient';
+// App.tsx
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import Test from './pages/test'
+import Login from './pages/login';
 
-const App = () => {
-  const [users, setUsers] = useState<any[]>([]);
-
-  useEffect(() => {
-    const fetchUsers = async () => {
-      const { data } = await supabase.from('users').select('*');
-        setUsers(data ?? []);
-        console.log('Fetched users:', data);
-    };
-    fetchUsers();
-  }, []);
-
+function App() {
   return (
-    <div className="p-4">
-      <h1 className="text-xl font-bold mb-4">Test Supabase Connection</h1>
-      <ul>
-        {users.map((user) => (
-          <li key={user.id}>{user.username} (ELO: {user.elo_rating})</li>
-        ))}
-      </ul>
-    </div>
-  );
-};
+    <Router>
+      <Routes>
+        <Route path="/" element={<Test />} />
+        <Route path="/login" element={<Login />} />
+      </Routes>
+    </Router>
+  )
+}
 
-export default App;
+export default App
