@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { supabase } from '../supabaseClient';
 
-const Test = () => {
+export default function Test() {
   const [users, setUsers] = useState<any[]>([]);
 
   useEffect(() => {
@@ -24,5 +24,3 @@ const Test = () => {
     </div>
   );
 };
-
-export default Test;
