@@ -3,7 +3,7 @@ import { supabase } from '../supabaseClient'
 
 import Logo from "/TeamSync_logo.svg"
 
-import { LoginForm } from "@/components/login-form"
+import { LoginForm } from "@/components/signup-form"
 
 export default function Login() {
   return (
