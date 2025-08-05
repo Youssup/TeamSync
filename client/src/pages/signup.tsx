@@ -1,9 +1,6 @@
-import {useState } from 'react'
-import { supabase } from '../supabaseClient'
-
 import Logo from "/TeamSync_logo.svg"
 
-import { LoginForm } from "@/components/signup-form"
+import { SignupForm } from "@/components/signup-form"
 
 export default function Login() {
   return (
@@ -15,7 +12,7 @@ export default function Login() {
           </div>
           TeamSync
         </a>
-        <LoginForm />
+        <SignupForm />
       </div>
     </div>
   )
