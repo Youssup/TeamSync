@@ -22,6 +22,16 @@ export default function Test() {
     fetchCurrentUser();
   }, []);
 
+  function getLoggedInUserEmail(user: any) {
+    if (user) {
+      return (
+        <h1 className="text-xl font-bold mb-4">
+          Logged in users email: {user.email}
+        </h1>
+      );
+    }
+    return <h1 className="text-xl font-bold mb-4">User is not logged in</h1>;
+  }
   return (
     <div className="p-4">
       <h1 className="text-xl font-bold mb-4">Test Supabase Connection</h1>
@@ -32,9 +42,7 @@ export default function Test() {
           </li>
         ))}
       </ul>
-      <h1 className="text-xl font-bold mb-4">
-        Get logged in users email: {user?.email}
-      </h1>
+      {getLoggedInUserEmail(user)}
     </div>
   );
 }
